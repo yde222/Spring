@@ -7,6 +7,7 @@ import hello.core.member.Member;
 import hello.core.member.MemberRepository;
 import hello.core.member.MemoryMemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
@@ -14,16 +15,13 @@ import org.springframework.stereotype.Component;
 @Primary
 public class OrderServiceImpl implements OrderService{
 
+    private  final MemberRepository memberRepository;
+    private  final DiscountPolicy discountPolicy;
 
-    private final MemberRepository memberRepository;
-    private final DiscountPolicy discountPolicy;
 
     //    @Autowired
-    //생성자- 불변,필수 의존관계
+//    생성자- 불변,필수 의존관계
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
-//        System.out.println("memberRepository = " + memberRepository);
-//        System.out.println("discountPolicy = " + discountPolicy);
-        System.out.println("1. OrderServiceImpl.OrderServiceImpl");
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
     }
