@@ -19,7 +19,12 @@ public class AppConfig {
 
 //    call AppConfig.memberService
 //    call AppConfig.memberRepository
+//    call AppConfig.memberRepository
 //    call AppConfig.orderService
+//    call AppConfig.memberRepository
+//    bean = class hello.core.AppConfig
+
+
 
     @Bean
     public MemberService memberService(){
