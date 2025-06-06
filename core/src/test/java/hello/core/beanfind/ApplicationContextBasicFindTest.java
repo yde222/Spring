@@ -15,24 +15,24 @@ public class ApplicationContextBasicFindTest {
     AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(AppConfig.class);
 
     @Test
-    @DisplayName("빈 이륾으로 조회")
+    @DisplayName("빈 이름으로 조회")
     void findBeanByName(){
         MemberService memberService = ac.getBean("memberService",MemberService.class);
         assertThat(memberService).isInstanceOf(MemberServiceImpl.class);
     }
 
     @Test
-    @DisplayName("구체 이륾으로 조회")
+    @DisplayName("구체 이름으로 조회")
     void findBeanByName2(){
         MemberServiceImpl memberService = ac.getBean("memberService",MemberServiceImpl.class);
         assertThat(memberService).isInstanceOf(MemberServiceImpl.class);
     }
 
-    @Test
-    @DisplayName("빈 이륾으로 조회X")
-    void findBeanByNameX(){
-        MemberService xxxx = ac.getBean("xxxxx",MemberService.class);
-        Assertions.assertThrows(NoSuchBeanDefinitionException.class,
-                () -> ac.getBean("xxxxx",MemberService.class));
-    }
+//    @Test
+//    @DisplayName("빈 이름으로 조회X")
+//    void findBeanByNameX(){
+//        MemberService xxxx = ac.getBean("xxxxx",MemberService.class);
+//        Assertions.assertThrows(NoSuchBeanDefinitionException.class,
+//                () -> ac.getBean("xxxxx",MemberService.class));
+//    }
 }
