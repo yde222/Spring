@@ -26,6 +26,8 @@ configurations {
 
 dependencies {
 
+	implementation 'jakarta.inject:jakarta.inject-api:2.0.1'
+
 	//lombok 라이브러리 추가 시작
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
