@@ -20,6 +20,7 @@ public class LogDemoController {
     public String logDemo(HttpServletRequest request) {
         String requestURI = request.getRequestURI().toString();
         MyLogger myLogger = myLoggerProvider.getObject();
+        System.out.println("myLogger = " + myLogger.getClass());
         myLogger.setRequestURL(requestURI);
 
         myLogger.log("controller text");
