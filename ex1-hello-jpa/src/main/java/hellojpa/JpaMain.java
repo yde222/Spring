@@ -12,15 +12,19 @@ public class JpaMain {
         EntityTransaction tx = em.getTransaction();
         tx.begin();
         //code
-        Member member = new Member();
-        member.setId(2L);
-        member.setName("HelloB");
+        try {
+            Member member = new Member();
+            member.setId(2L);
+            member.setName("HelloB");
 
-        em.persist(member);
+            em.persist(member);
 
-        tx.commit();
-
-        em.close();
-        emf.close();
+            tx.commit();
+        } catch (Exception e){
+            tx.rollback();
+        } finally {
+            em.close();
+        }
+            emf.close();
     }
 }
