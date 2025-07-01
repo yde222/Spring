@@ -20,8 +20,11 @@ public class JpaMain {
             em.persist(team);
 
             Member member = new Member();
-            member.setName("member1");
+            member.setUsername("member1");
             em.persist(member);
+
+            em.flush();
+            em.close();
 
             Team findTeam = em.find(Team.class, team.getId());
             List<Member> members = findTeam.getMembers();
@@ -29,8 +32,7 @@ public class JpaMain {
 
 
 
-            em.flush();
-            em.close();
+
 
 
             tx.commit();
