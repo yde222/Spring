@@ -37,7 +37,10 @@ public class Member {
         return team;
     }
 
+    public void changeTeam(Team team) {
+
+    }
+
     public void setTeam(Team team) {
-        this.team = team;
     }
 }
