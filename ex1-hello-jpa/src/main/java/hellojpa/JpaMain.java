@@ -17,17 +17,20 @@ public class JpaMain {
         tx.begin();
 
         try {
-          Member member1 = new Member();
-          member1.setUsername("hello");
-          em.persist(member1);
+            Team team = new Team();
+            team.setName("teamA");
+            em.persist(team);
 
-          em.flush();
-          em.clear();
+            Member member1 = new Member();
+            member1.setUsername("member1");
+            member1.setTeam(team);
+            em.persist(member1);
 
-            Member reMember = em.getReference(Member.class, member1.getId());
-            System.out.println("reMember.getClass() = " + reMember.getClass()); //proxy
-            Hibernate.initialize(reMember); //강제 초기화
+            em.flush();
+            em.clear();
 
+            Member m = em.getReference(Member.class, member1.getId());
+            System.out.println("m = " + m.getTeam().getClass());
 
 
 
