@@ -16,24 +16,23 @@ public class JpaMain {
         tx.begin();
 
         try {
-          Member member = new Member();
-          member.setUsername("hello");
-
-          em.persist(member);
+          Member member1 = new Member();
+          member1.setUsername("hello");
+          em.persist(member1);
 
           em.flush();
           em.clear();
 
-//            Member findMember = em.find(Member.class,member.getId());
-            Member findMember = em.getReference(Member.class,member.getId());
-            System.out.println("before findMember = " + findMember.getClass());
-            System.out.println("findMember.id = "+ findMember.getId());
-            System.out.println("findMember.username = "+ findMember.getUsername());
-            System.out.println("after findMember = " + findMember.getClass());
+            Member reMember = em.getReference(Member.class, member1.getId());
+            System.out.println("reMember.getClass() = " + reMember.getClass()); //proxy
+            reMember.getUsername();
+            System.out.println("isLoaded = " +emf.getPersistenceUnitUtil().isLoaded(reMember));
+
 
             tx.commit();
         } catch (Exception e){
             tx.rollback();
+            e.printStackTrace();
         } finally {
             em.close();
         }
