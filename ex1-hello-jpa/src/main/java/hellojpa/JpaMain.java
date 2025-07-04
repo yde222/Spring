@@ -1,6 +1,7 @@
 package hellojpa;
 
 import jakarta.persistence.*;
+import org.hibernate.Hibernate;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -25,8 +26,9 @@ public class JpaMain {
 
             Member reMember = em.getReference(Member.class, member1.getId());
             System.out.println("reMember.getClass() = " + reMember.getClass()); //proxy
-            reMember.getUsername();
-            System.out.println("isLoaded = " +emf.getPersistenceUnitUtil().isLoaded(reMember));
+            Hibernate.initialize(reMember); //강제 초기화
+
+
 
 
             tx.commit();
