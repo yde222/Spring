@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 public class MemberProduct {
 
 
-    @Id
+    @Id @GeneratedValue
     @ManyToOne
     @JoinColumn(name ="MEMBER_ID")
     private Member member;
