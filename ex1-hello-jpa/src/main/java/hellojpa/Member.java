@@ -3,9 +3,7 @@ package hellojpa;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
+
 
 @Entity
 public class Member extends BaseEntity{
@@ -24,7 +22,16 @@ public class Member extends BaseEntity{
 
     //주소
     @Embedded
-    private Address address;
+    private Address homeAddress;
+
+    //주소
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "city", column = @Column(name = "WORK_CITY")),
+            @AttributeOverride(name = "street", column = @Column(name = "WORK_STREET")),
+            @AttributeOverride(name = "zipcode", column = @Column(name = "WORK_ZIPCODE"))
+    })
+    private Address workAddress;
 
     public Long getId() {
         return id;
@@ -50,11 +57,19 @@ public class Member extends BaseEntity{
         this.period = period;
     }
 
-    public Address getAddress() {
-        return address;
+    public Address getHomeAddress() {
+        return homeAddress;
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
+    public void setHomeAddress(Address homeAddress) {
+        this.homeAddress = homeAddress;
+    }
+
+    public Address getWorkAddress() {
+        return workAddress;
+    }
+
+    public void setWorkAddress(Address workAddress) {
+        this.workAddress = workAddress;
     }
 }
