@@ -6,7 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 
 @Entity
-
+@DiscriminatorValue("A")
 public class Album extends Item{
 
     private String artist;
