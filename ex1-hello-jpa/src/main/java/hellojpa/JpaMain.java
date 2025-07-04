@@ -1,9 +1,6 @@
 package hellojpa;
 
 import jakarta.persistence.*;
-import org.hibernate.Hibernate;
-
-import java.time.LocalDateTime;
 import java.util.List;
 
 public class JpaMain {
@@ -26,15 +23,22 @@ public class JpaMain {
             member1.setTeam(team);
             em.persist(member1);
 
+
+            Member member2 = new Member();
+            member2.setUsername("member2");
+            member2.setTeam(team);
+            em.persist(member2);
+
             em.flush();
             em.clear();
 
-            Member m = em.getReference(Member.class, member1.getId());
-            System.out.println("m = " + m.getTeam().getClass());
+             Member m = em.find(Member.class, member1.getId());
+            List<Member> members = em.createQuery("select m from Member m join fetch m.team", Member.class)
+                    .getResultList();
 
-            System.out.println("=======================");
-            System.out.println("teamName = " + m.getTeam().getName());
-            System.out.println("=======================");
+
+
+
 
 
             tx.commit();
