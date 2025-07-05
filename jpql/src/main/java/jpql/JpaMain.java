@@ -21,10 +21,10 @@ public class JpaMain {
             member.setAge(10);
             em.persist(member);
 
-            TypedQuery<Member> query1 = em.createQuery("select m from Member m", Member.class);
-            TypedQuery<Member> query2 = em.createQuery("select m.username,m.age from Member m", Member.class);
-            Query query3 = em.createQuery("select m.username,m.age from Member m", Member.class);
+            TypedQuery<Member> query= em.createQuery("select m from Member m", Member.class);
 
+            Member result = query.getSingleResult();
+            System.out.println("result = " + result);
 
 
             tx.commit();
