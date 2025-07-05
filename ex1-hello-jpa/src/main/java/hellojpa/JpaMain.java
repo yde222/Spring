@@ -35,12 +35,17 @@ public class JpaMain {
             System.out.println("=============== START ===============");
             Member findMember = em.find(Member.class, member.getId());
 
-            Address a = findMember.getHomeAddress();
+      /*      Address a = findMember.getHomeAddress();
             findMember.setHomeAddress(new Address("newCity",a.getStreet(),a.getZipcode()));
 
             //치킨 -> 한식 변경하는 경우
             findMember.getFavoriteFoods().remove("치킨");
-            findMember.getFavoriteFoods().add("한식");
+            findMember.getFavoriteFoods().add("한식");*/
+
+
+            findMember.getAddressHistory().remove(new Address("old1", "street", "1000"));
+            findMember.getAddressHistory().add(new Address("newCity1", "street", "1000"));
+
 
 
             tx.commit();
