@@ -1,5 +1,6 @@
 package jpql;
 
+
 public class MemberDTO {
 
     private String username;
