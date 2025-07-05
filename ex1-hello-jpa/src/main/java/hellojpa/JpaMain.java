@@ -1,6 +1,10 @@
 package hellojpa;
 
 import jakarta.persistence.*;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Root;
+
 import java.util.List;
 import java.util.Set;
 
@@ -15,17 +19,15 @@ public class JpaMain {
         tx.begin();
 
         try {
+            //Criteria 사용 준비
+            CriteriaBuilder cb = em.getCriteriaBuilder();
+            CriteriaQuery<Member> query = cb.createQuery(Member.class);
 
-            List<Member> result = em.createQuery(
-                    "select m from Member m where m.username like '%kim%'",
-                    Member.class
-            ).getResultList();
+            Root<Member> m = query.from(Member.class);
 
-            for(Member member: result){
-                System.out.println("member = " + member);
-            }
-
-
+            CriteriaQuery<Member> cq = query.select(m).where(cb.equal(m.get("username"),"kim"));
+            List<Member> resultList = em.createQuery(cq)
+                    .getResultList();
 
             tx.commit();
         } catch (Exception e){
