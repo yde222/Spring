@@ -31,9 +31,10 @@ public class JpaMain {
             em.clear();
 
             String query = "select m.username, 'HELLO', true From Member m" +
-                            " where m.type =  jpql.MemberType.ADMIN " ;
+                            " where m.type =  :userType " ;
 
             List<Object[]> result = em.createQuery(query)
+                    .setParameter("userType",MemberType.ADMIN)
                     .getResultList();
 
             for(Object[] objects : result){
