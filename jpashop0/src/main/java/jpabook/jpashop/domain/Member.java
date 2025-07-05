@@ -3,6 +3,9 @@ package jpabook.jpashop.domain;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static jakarta.persistence.FetchType.LAZY;
 
 @Entity
@@ -10,14 +13,15 @@ public class Member extends BaseEntity{
 
     @Id
     @GeneratedValue
+    @Column(name = "MEMBER_ID")
     private Long id;
-
-    @Column(name = "USERNAME")
     private String name;
 
-    @ManyToOne(fetch = LAZY)
-    @JoinColumn(name = "TEAM_ID")
-    private Team team;
+    @Embedded
+    private Address address;
+
+    @OneToMany(mappedBy = "member")
+    private List<Order> orders = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -35,14 +39,19 @@ public class Member extends BaseEntity{
         this.name = name;
     }
 
-    public Team getTeam() {
-        return team;
+    public Address getAddress() {
+        return address;
     }
 
-    public void changeTeam(Team team) {
-
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
-    public void setTeam(Team team) {
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
     }
 }
