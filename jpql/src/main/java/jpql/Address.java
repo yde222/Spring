@@ -1,4 +1,5 @@
 package jpql;
+
 import jakarta.persistence.Embeddable;
 
 

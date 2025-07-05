@@ -15,17 +15,19 @@ public class JpaMain {
         tx.begin();
 
         try {
-
             Member member = new Member();
             member.setUsername("member1");
             member.setAge(10);
             em.persist(member);
 
-            TypedQuery<Member> query= em.createQuery("select m from Member m", Member.class);
+            em.flush();
+            em.clear();
 
-            Member result = query.getSingleResult();
-            System.out.println("result = " + result);
+            List<Member> result= em.createQuery("select m from Member m ", Member.class)
+                    .getResultList();
 
+            Member findMember = result.get(0);
+            findMember.setAge(20);
 
             tx.commit();
         } catch (Exception e){
