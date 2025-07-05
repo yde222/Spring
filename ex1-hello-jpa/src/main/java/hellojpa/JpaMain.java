@@ -2,6 +2,7 @@ package hellojpa;
 
 import jakarta.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 public class JpaMain {
 
@@ -27,6 +28,20 @@ public class JpaMain {
             member.getAddressHistory().add(new Address("old2","street","1000"));
 
             em.persist(member);
+
+            em.flush();
+            em.clear();
+
+            System.out.println("=============== START ===============");
+            Member findMember = em.find(Member.class, member.getId());
+
+            Address a = findMember.getHomeAddress();
+            findMember.setHomeAddress(new Address("newCity",a.getStreet(),a.getZipcode()));
+
+            //치킨 -> 한식 변경하는 경우
+            findMember.getFavoriteFoods().remove("치킨");
+            findMember.getFavoriteFoods().add("한식");
+
 
             tx.commit();
         } catch (Exception e){
