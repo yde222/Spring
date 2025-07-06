@@ -33,8 +33,8 @@ public class JpaMain {
             em.flush();
             em.clear();
 
-            String query = "select t.members from Team t";
-            Collection result = em.createQuery(query, Collection.class)
+            String query = "select m from Team t join t.members m";
+            List<Collection> result = em.createQuery(query, Collection.class)
                     .getResultList();
 
             System.out.println("result = " + result);
