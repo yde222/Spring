@@ -7,7 +7,9 @@
     <list default="true" id="a1379202-9c29-4c36-ad3a-64c6409f615f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/../ex1-hello-jpa/src/main/java/hellojpa/JpaMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ex1-hello-jpa/src/main/java/hellojpa/JpaMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ex1-hello-jpa/target/classes/hellojpa/JpaMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/../ex1-hello-jpa/target/classes/hellojpa/JpaMain.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/jpql/JpaMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jpql/JpaMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/jpql/JpaMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/jpql/JpaMain.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../untitled/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../untitled/.idea/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../untitled/.idea/encodings.xml" beforeDir="false" />
@@ -121,7 +123,7 @@
       <workItem from="1751713025297" duration="1079000" />
       <workItem from="1751714118457" duration="104000" />
       <workItem from="1751714228832" duration="56000" />
-      <workItem from="1751714287400" duration="18815000" />
+      <workItem from="1751714287400" duration="20191000" />
     </task>
     <servers />
   </component>
