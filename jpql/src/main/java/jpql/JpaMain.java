@@ -21,7 +21,7 @@ public class JpaMain {
             em.persist(team);
 
             Member member = new Member();
-            member.setUsername("관리자");
+            member.setUsername("관리자2");
             member.setAge(10);
             member.setType(MemberType.ADMIN);
 
@@ -31,11 +31,11 @@ public class JpaMain {
             em.flush();
             em.clear();
 
-            String query = " select substring(m.username,2,3) FROM Member m " ;
-            List<String> result = em.createQuery(query, String.class)
+            String query = " select locate('de','abcde') FROM Member m " ;
+            List<Integer> result = em.createQuery(query, Integer.class)
                     .getResultList();
 
-            for(String s : result){
+            for(Integer s : result){
                 System.out.println("s = " + s);
             }
 
