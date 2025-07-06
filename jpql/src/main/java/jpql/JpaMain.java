@@ -31,7 +31,7 @@ public class JpaMain {
             em.flush();
             em.clear();
 
-            String query = " select coalesce(m.username, '이름 없는 회원') as username" +
+            String query = " select nullif(m.username, '관리자') as username" +
                     " from  Member m " ;
             List<String> result = em.createQuery(query, String.class)
                     .getResultList();
