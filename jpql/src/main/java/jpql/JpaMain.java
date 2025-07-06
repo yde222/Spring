@@ -29,11 +29,11 @@ public class JpaMain {
             em.clear();
 
 
-            String query = " select m.username FROM Member m" ;
-            List<String> result = em.createQuery(query, String.class)
+            String query = " select m.team FROM Member m" ;
+            List<Team> result = em.createQuery(query, Team.class)
                     .getResultList();
 
-            for(String s : result){
+            for(Team s : result){
                 System.out.println("s = " + s);
             }
 
