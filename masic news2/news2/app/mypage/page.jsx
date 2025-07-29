@@ -25,6 +25,7 @@ import {
   Share2,
 } from "lucide-react"
 import Link from "next/link"
+import Header from "@/components/header"
 
 export default function MyPage() {
   const [selectedInterests, setSelectedInterests] = useState(["정치", "경제", "IT/과학"])
@@ -101,29 +102,7 @@ export default function MyPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <header className="bg-white shadow-sm border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center space-x-4">
-              <Link href="/" className="flex items-center text-blue-600 hover:text-blue-700">
-                <ArrowLeft className="h-5 w-5 mr-2" />
-                <span className="text-2xl font-bold">NewsHub</span>
-              </Link>
-            </div>
-
-            <div className="flex items-center space-x-4">
-              <Button variant="ghost" size="icon">
-                <Bell className="h-5 w-5" />
-              </Button>
-              <Avatar>
-                <AvatarImage src="/placeholder.svg?height=32&width=32" />
-                <AvatarFallback>김사용자</AvatarFallback>
-              </Avatar>
-            </div>
-          </div>
-        </div>
-      </header>
+      <Header />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
