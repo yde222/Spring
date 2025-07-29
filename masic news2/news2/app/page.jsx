@@ -12,10 +12,10 @@ import Header from "@/components/header"
 
 export default function MainPage() {
   const [selectedCategory, setSelectedCategory] = useState("전체")
-  const [isVisible, setIsVisible] = useState(false)
+  const [isLoaded, setIsLoaded] = useState(false)
 
   useEffect(() => {
-    setIsVisible(true)
+    setIsLoaded(true)
   }, [])
 
   const categories = ["전체", "정치", "경제", "사회", "IT/과학", "스포츠", "문화"]
@@ -24,11 +24,8 @@ export default function MainPage() {
     {
       id: 1,
       title: "AI 기술의 급속한 발전, 일자리 시장에 미치는 영향은?",
-      summary: [
-        "인공지능 기술이 빠르게 발전하면서 다양한 산업 분야에서 변화가 일어나고 있습니다.",
-        "전문가들은 새로운 일자리 창출과 기존 업무의 자동화가 동시에 진행될 것으로 전망합니다.",
-        "이러한 변화에 대응하기 위한 교육 시스템과 정책적 지원이 시급하다고 강조합니다."
-      ],
+      summary:
+        "인공지능 기술이 빠르게 발전하면서 다양한 산업 분야에서 변화가 일어나고 있습니다. 전문가들은 새로운 일자리 창출과 기존 업무의 자동화가 동시에 진행될 것으로 전망한다고 밝혔습니다.",
       category: "IT/과학",
       source: "테크뉴스",
       publishedAt: "2시간 전",
@@ -38,11 +35,8 @@ export default function MainPage() {
     {
       id: 2,
       title: "2024년 경제 전망, 전문가들이 예측하는 주요 변화",
-      summary: [
-        "올해 경제 성장률과 물가 상승률에 대한 전문가들의 분석이 발표되었습니다.",
-        "글로벌 경제 불확실성 속에서도 국내 경제는 안정적인 성장세를 유지할 것으로 예상됩니다.",
-        "투자자들은 새로운 경제 정책에 대한 기대감을 나타내고 있습니다."
-      ],
+      summary:
+        "올해 경제 성장률과 물가 상승률에 대한 전문가들의 분석이 발표되었습니다. 글로벌 경제 불확실성 속에서도 국내 경제는 안정적인 성장세를 유지할 것으로 예상됩니다.",
       category: "경제",
       source: "경제일보",
       publishedAt: "4시간 전",
@@ -52,11 +46,8 @@ export default function MainPage() {
     {
       id: 3,
       title: "환경보호를 위한 새로운 정책, 시민들의 반응은?",
-      summary: [
-        "정부가 발표한 새로운 환경보호 정책에 대해 시민들과 환경단체들의 다양한 의견이 제시되고 있습니다.",
-        "실효성과 실현 가능성에 대한 논의가 활발히 진행되고 있습니다.",
-        "지속가능한 발전을 위한 구체적인 실행 방안이 요구되고 있습니다."
-      ],
+      summary:
+        "정부가 발표한 새로운 환경보호 정책에 대해 시민들과 환경단체들의 다양한 의견이 제시되고 있습니다. 실효성과 실현 가능성에 대한 논의가 활발히 진행되고 있습니다.",
       category: "사회",
       source: "환경뉴스",
       publishedAt: "6시간 전",
@@ -65,49 +56,37 @@ export default function MainPage() {
     },
   ]
 
-  const trendingKeywords = [
-    { keyword: "AI 기술", count: 1234, trend: "up" },
-    { keyword: "경제 정책", count: 892, trend: "up" },
-    { keyword: "환경 보호", count: 567, trend: "down" },
-    { keyword: "디지털 전환", count: 445, trend: "up" },
-    { keyword: "스타트업", count: 334, trend: "up" },
-  ]
-
   return (
-    <div className="min-h-screen gradient-bg relative overflow-hidden">
-      {/* 그라데이션 배경 오버레이 */}
-      <div className="absolute inset-0 bg-gradient-to-br from-white via-blue-100 to-pink-100/30"></div>
-      
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
       <Header />
       
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           {/* Main Content */}
           <div className="lg:col-span-3">
-            <div className={`mb-6 animate-slide-in ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-              <div className="neumorphism rounded-2xl px-4 py-2">
-                <div className="flex space-x-2 overflow-x-auto pb-2 mt-1">
-                  {categories.map((category, index) => (
-                    <Button
-                      key={category}
-                      variant={selectedCategory === category ? "default" : "outline"}
-                      size="sm"
-                      onClick={() => setSelectedCategory(category)}
-                      className={`whitespace-nowrap transition-all duration-300 hover-float ${
-                        selectedCategory === category ? 'animate-glow' : ''
-                      }`}
-                      style={{ animationDelay: `${index * 0.1}s` }}
-                    >
-                      {category}
-                    </Button>
-                  ))}
-                </div>
+            {/* Category Tabs */}
+            <div className="mb-6">
+              <div className="flex space-x-2 overflow-x-auto pb-2">
+                {categories.map((category, index) => (
+                  <Button
+                    key={category}
+                    variant={selectedCategory === category ? "default" : "outline"}
+                    size="sm"
+                    onClick={() => setSelectedCategory(category)}
+                    className={`whitespace-nowrap hover-lift ${
+                      isLoaded ? 'animate-slide-in' : 'opacity-0'
+                    }`}
+                    style={{ animationDelay: `${index * 0.1}s` }}
+                  >
+                    {category}
+                  </Button>
+                ))}
               </div>
             </div>
 
-            {/* Featured News with Glassmorphism */}
-            <div className={`mb-8 animate-slide-in ${isVisible ? 'opacity-100' : 'opacity-0'}`} style={{ animationDelay: '0.2s' }}>
-              <Card className="glass hover-glow transition-all duration-500 overflow-hidden">
+            {/* Featured News */}
+            <div className="mb-8">
+              <Card className="overflow-hidden glass hover-lift animate-slide-in">
                 <div className="md:flex">
                   <div className="md:w-1/2 relative">
                     <img
@@ -116,16 +95,19 @@ export default function MainPage() {
                       className="w-full h-64 md:h-full object-cover"
                     />
                     <div className="absolute top-4 left-4">
-                      <Badge className="animate-pulse-slow bg-gradient-to-r from-red-500 to-pink-500 text-white">
-                        <Zap className="w-3 h-3 mr-1" />
-                        속보
-                      </Badge>
+                      <Badge className="floating-badge animate-glow">속보</Badge>
                     </div>
                   </div>
                   <div className="md:w-1/2 p-6">
-                    <h2 className="text-2xl font-bold mb-3 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                      주요 경제 정책 발표, 시장에 미치는 파급효과 분석
-                    </h2>
+                    <h2 className="text-2xl font-bold mb-3 text-gray-800">주요 경제 정책 발표, 시장에 미치는 파급효과 분석</h2>
+                    
+                    {/* 3줄 요약 시각화 */}
+                    <div className="mb-4 space-y-1">
+                      <div className="summary-line-1"></div>
+                      <div className="summary-line-2"></div>
+                      <div className="summary-line-3"></div>
+                    </div>
+                    
                     <p className="text-gray-600 mb-4">
                       정부가 발표한 새로운 경제 정책이 금융시장과 실물경제에 미칠 영향에 대해 전문가들이 다양한 분석을
                       내놓고 있습니다. 이번 정책은 기업 투자 활성화와 소비 진작을 목표로 하고 있어...
@@ -150,55 +132,37 @@ export default function MainPage() {
               </Card>
             </div>
 
-            {/* News List with 3-line Summary */}
+            {/* News List */}
             <div className="space-y-6">
               {newsItems.map((news, index) => (
                 <Card 
                   key={news.id} 
-                  className={`glass hover-glow transition-all duration-500 animate-slide-in ${
-                    isVisible ? 'opacity-100' : 'opacity-0'
+                  className={`glass hover-lift animate-slide-in ${
+                    isLoaded ? 'opacity-100' : 'opacity-0'
                   }`}
-                  style={{ animationDelay: `${0.4 + index * 0.1}s` }}
+                  style={{ animationDelay: `${(index + 1) * 0.2}s` }}
                 >
                   <div className="md:flex">
-                    <div className="md:w-1/3">
+                    <div className="md:w-1/3 relative">
                       <img
                         src={news.image || "/placeholder.svg"}
                         alt={news.title}
                         className="w-full h-48 md:h-full object-cover rounded-l-lg"
                       />
+                      <div className="absolute top-2 left-2">
+                        <Badge className="floating-badge text-xs">{news.category}</Badge>
+                      </div>
                     </div>
                     <div className="md:w-2/3 p-6">
                       <div className="flex items-center justify-between mb-2">
-                        <Badge className="neumorphism-inset px-3 py-1 text-xs">
-                          {news.category}
-                        </Badge>
+                        <Label theme="category" className="text-sm font-medium text-blue-600">{news.category}</Label>
                         <span className="text-sm text-gray-500 flex items-center">
                           <Clock className="h-4 w-4 mr-1" />
                           {news.publishedAt}
                         </span>
                       </div>
-                      <h3 className="text-xl font-semibold mb-3 hover:text-blue-600 cursor-pointer transition-colors">
-                        {news.title}
-                      </h3>
-                      
-                      {/* 3줄 요약 시각화 */}
-                      <div className="space-y-2 mb-4">
-                        {news.summary.map((line, lineIndex) => (
-                          <div
-                            key={lineIndex}
-                            className={`h-2 rounded-full opacity-80 ${
-                              lineIndex === 0 ? 'summary-line-1' : 
-                              lineIndex === 1 ? 'summary-line-2' : 'summary-line-3'
-                            }`}
-                            style={{ width: `${Math.min(100, line.length * 2)}%` }}
-                          ></div>
-                        ))}
-                      </div>
-                      
-                      <p className="text-gray-600 mb-4 line-clamp-3">
-                        {news.summary.join(' ')}
-                      </p>
+                      <h3 className="text-xl font-semibold mb-3 hover:text-blue-600 cursor-pointer transition-colors">{news.title}</h3>
+                      <p className="text-gray-600 mb-4 line-clamp-3">{news.summary}</p>
                       <div className="flex items-center justify-between">
                         <span className="text-sm text-gray-500">{news.source}</span>
                         <div className="flex items-center space-x-4">
@@ -221,54 +185,46 @@ export default function MainPage() {
             </div>
           </div>
 
-          {/* Sidebar with Floating Elements */}
+          {/* Sidebar */}
           <div className="lg:col-span-1">
             <div className="space-y-6">
-              {/* Newsletter Subscription with Glassmorphism */}
-              <Card className={`glass animate-slide-in ${isVisible ? 'opacity-100' : 'opacity-0'}`} style={{ animationDelay: '0.6s' }}>
+              {/* Newsletter Subscription */}
+              <Card className="glass hover-lift animate-slide-in" style={{ animationDelay: '0.3s' }}>
                 <CardHeader>
-                  <CardTitle className="text-lg bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                  <CardTitle className="text-lg flex items-center">
+                    <Zap className="h-5 w-5 mr-2 text-yellow-500" />
                     뉴스레터 구독
                   </CardTitle>
                   <CardDescription>매일 아침 엄선된 뉴스를 받아보세요</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-3">
-                    <Input placeholder="이메일 주소" type="email" className="neumorphism-inset" />
-                    <Button className="w-full gradient-bg-brand hover-glow text-white">
+                    <Input placeholder="이메일 주소" type="email" className="bg-white/50 border-gray-200" />
+                    <Button className="w-full gradient-bg hover:shadow-lg transition-all duration-300">
                       구독하기
                     </Button>
                   </div>
                 </CardContent>
               </Card>
 
-              {/* Trending Keywords with Floating Badges */}
-              <Card className={`glass animate-slide-in ${isVisible ? 'opacity-100' : 'opacity-0'}`} style={{ animationDelay: '0.8s' }}>
+              {/* Trending Topics */}
+              <Card className="glass hover-lift animate-slide-in" style={{ animationDelay: '0.4s' }}>
                 <CardHeader>
                   <CardTitle className="text-lg flex items-center">
-                    <TrendingUp className="w-5 h-5 mr-2 text-red-500" />
+                    <TrendingUp className="h-5 w-5 mr-2 text-red-500" />
                     실시간 인기 키워드
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="space-y-3">
-                    {trendingKeywords.map((item, index) => (
-                      <div 
-                        key={item.keyword} 
-                        className={`flex items-center justify-between p-2 rounded-lg trending-badge animate-float`}
-                        style={{ animationDelay: `${index * 0.2}s` }}
-                      >
+                  <div className="space-y-2">
+                    {["인공지능", "경제정책", "환경보호", "디지털전환", "스타트업"].map((keyword, index) => (
+                      <div key={keyword} className="flex items-center justify-between p-2 rounded-lg hover:bg-white/50 transition-all duration-300 trending-keyword">
                         <span className="flex items-center">
                           <span className="text-sm font-medium text-blue-600 mr-2">{index + 1}</span>
-                          {item.keyword}
+                          {keyword}
                         </span>
-                        <Badge 
-                          variant="outline" 
-                          className={`text-xs ${
-                            item.trend === 'up' ? 'text-green-500 border-green-500' : 'text-red-500 border-red-500'
-                          }`}
-                        >
-                          {item.trend === 'up' ? '↗' : '↘'} {item.count}
+                        <Badge variant="outline" className="text-xs floating-badge">
+                          HOT
                         </Badge>
                       </div>
                     ))}
@@ -276,16 +232,14 @@ export default function MainPage() {
                 </CardContent>
               </Card>
 
-              {/* Weather Widget with Neumorphism */}
-              <Card className={`neumorphism animate-slide-in ${isVisible ? 'opacity-100' : 'opacity-0'}`} style={{ animationDelay: '1s' }}>
+              {/* Weather Widget */}
+              <Card className="glass hover-lift animate-slide-in" style={{ animationDelay: '0.5s' }}>
                 <CardHeader>
                   <CardTitle className="text-lg">오늘의 날씨</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="text-center">
-                    <div className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                      22°C
-                    </div>
+                    <div className="text-3xl font-bold text-blue-600 animate-pulse-slow">22°C</div>
                     <div className="text-gray-600">맑음</div>
                     <div className="text-sm text-gray-500 mt-2">서울특별시</div>
                   </div>
