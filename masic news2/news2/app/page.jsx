@@ -20,6 +20,7 @@ export default function MainPage() {
 
   const categories = ["전체", "정치", "경제", "사회", "IT/과학", "스포츠", "문화"]
 
+
   const newsItems = [
     {
       id: 1,
@@ -95,18 +96,12 @@ export default function MainPage() {
                       className="w-full h-64 md:h-full object-cover"
                     />
                     <div className="absolute top-4 left-4">
-                      <Badge className="floating-badge animate-glow">속보</Badge>
+                    <Badge className="bg-red-600 text-white px-4 py-1 rounded-full shadow-lg font-bold tracking-wider">속보</Badge>
                     </div>
                   </div>
                   <div className="md:w-1/2 p-6">
                     <h2 className="text-2xl font-bold mb-3 text-gray-800">주요 경제 정책 발표, 시장에 미치는 파급효과 분석</h2>
                     
-                    {/* 3줄 요약 시각화 */}
-                    <div className="mb-4 space-y-1">
-                      <div className="summary-line-1"></div>
-                      <div className="summary-line-2"></div>
-                      <div className="summary-line-3"></div>
-                    </div>
                     
                     <p className="text-gray-600 mb-4">
                       정부가 발표한 새로운 경제 정책이 금융시장과 실물경제에 미칠 영향에 대해 전문가들이 다양한 분석을
@@ -150,7 +145,9 @@ export default function MainPage() {
                         className="w-full h-48 md:h-full object-cover rounded-l-lg"
                       />
                       <div className="absolute top-2 left-2">
-                        <Badge className="floating-badge text-xs">{news.category}</Badge>
+                      <Badge className="bg-blue-600 text-white text-xs px-3 py-1 rounded-full shadow">
+                        {news.category}
+                      </Badge>
                       </div>
                     </div>
                     <div className="md:w-2/3 p-6">
@@ -217,17 +214,17 @@ export default function MainPage() {
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-2">
-                    {["인공지능", "경제정책", "환경보호", "디지털전환", "스타트업"].map((keyword, index) => (
-                      <div key={keyword} className="flex items-center justify-between p-2 rounded-lg hover:bg-white/50 transition-all duration-300 trending-keyword">
-                        <span className="flex items-center">
-                          <span className="text-sm font-medium text-blue-600 mr-2">{index + 1}</span>
-                          {keyword}
-                        </span>
-                        <Badge variant="outline" className="text-xs floating-badge">
-                          HOT
-                        </Badge>
-                      </div>
-                    ))}
+                  {["인공지능", "경제정책", "환경보호", "디지털전환", "스타트업"].map((keyword, index) => (
+                  <div key={keyword} className="flex items-center justify-between p-2 rounded-lg hover:bg-white/50 transition-all duration-300 trending-keyword">
+                    <span className="flex items-center">
+                      <span className="text-sm font-medium text-blue-600 mr-2">{index + 1}</span>
+                      {keyword}
+                    </span>
+                    <Badge className="!bg-red-500 !text-white text-xs rounded-full px-3 py-1 shadow-md">
+                        HOT
+                      </Badge>
+                  </div>
+                ))}
                   </div>
                 </CardContent>
               </Card>

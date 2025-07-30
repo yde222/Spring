@@ -129,9 +129,12 @@ export default function CommunityPage() {
                   <div className="flex items-center justify-between">
                     <div className="flex space-x-2">
                       {["정치", "경제", "사회", "IT/과학"].map((tag) => (
-                        <Badge key={tag} variant="outline" className="cursor-pointer hover:bg-white/50 floating-badge">
-                          {tag}
-                        </Badge>
+                       <Badge
+                       key={tag}
+                       className="bg-blue-600 text-white text-xs px-3 py-1 rounded-full shadow cursor-pointer hover:bg-blue-700 transition"
+                     >
+                       {tag}
+                     </Badge>
                       ))}
                     </div>
                     <Button className="gradient-bg hover:shadow-lg transition-all duration-300">
@@ -162,11 +165,11 @@ export default function CommunityPage() {
                         <div>
                           <div className="flex items-center space-x-2">
                             <span className="font-medium">{discussion.author.name}</span>
-                            <Badge variant="secondary" className="text-xs floating-badge">
+                            <Badge className="bg-blue-600 text-white text-xs px-3 py-1 rounded-full shadow">
                               {discussion.author.level}
                             </Badge>
                           </div>
-                          <div className="flex items-center space-x-2 text-sm text-gray-500">
+                          <div className="flex items-center space-x-2 text-sm text-gray-500 mt-2">
                             <span>{discussion.createdAt}</span>
                             <span>•</span>
                             <Badge variant="outline" className="text-xs">
@@ -191,9 +194,12 @@ export default function CommunityPage() {
                     {/* Tags */}
                     <div className="flex flex-wrap gap-2 mb-4">
                       {discussion.tags.map((tag) => (
-                        <Badge key={tag} variant="secondary" className="text-xs floating-badge">
-                          #{tag}
-                        </Badge>
+                        <Badge
+                        key={tag}
+                        className="bg-blue-600 text-white text-xs px-3 py-1 rounded-full shadow"
+                      >
+                        #{tag}
+                      </Badge>                      
                       ))}
                     </div>
 
@@ -260,9 +266,12 @@ export default function CommunityPage() {
                 <CardContent>
                   <div className="flex flex-wrap gap-2">
                     {["AI", "경제", "정치", "환경", "기술", "투자", "정책", "사회"].map((tag) => (
-                      <Badge key={tag} variant="outline" className="cursor-pointer hover:bg-white/50 floating-badge">
-                        #{tag}
-                      </Badge>
+                      <Badge
+                      key={tag}
+                      className="bg-blue-600 text-white text-xs px-3 py-1 rounded-full shadow cursor-pointer hover:bg-blue-700 transition"
+                    >
+                      #{tag}
+                    </Badge>
                     ))}
                   </div>
                 </CardContent>
